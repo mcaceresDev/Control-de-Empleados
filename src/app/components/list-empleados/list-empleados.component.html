@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="d-flex justify-content-between mt-3">
+                <h3>Listado de empleados</h3>
+                <button class="btn btn-success" routerLink="/create-empleado">Agregar</button>
+            </div>
+            <h4 *ngIf="empleados.length == 0" class="avisoVacio text-center text-danger mt-5">No hay datos que mostrar</h4>
+            <table *ngIf="empleados.length > 0" class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Apellido</th>
+                      <th scope="col">Cédula</th>
+                      <th scope="col">Salario</th>
+                      <th>Editar</th>
+                      <th>Eliminar</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr *ngFor="let empleado of empleados">
+                      <td>{{ empleado.nombre }}</td>
+                      <td>{{ empleado.apellido }}</td>
+                      <td>{{ empleado.cedula }}</td>
+                      <td>{{ empleado.salario | currency }}</td>
+                      <td><button [routerLink]="['/editEmpleado/', empleado.id]" class="btn btn-warning"><i class="fas fa-edit"></i></button></td>
+                      <td><button (click)="eliminarEmpleado(empleado.id)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+                    </tr>
+
+                  </tbody>
+            </table>
+
+            
+
+            <!-- <ul>
+              <li class="text" *ngFor="let item of items | async">
+                {{item.name}}
+              </li>
+            </ul> -->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container d-flex w-100">
+    <div class="card mx-auto mt-5 px-4">
+        <h3 class="text-center mt-4">{{Titulo}}</h3>
+
+        <div *ngIf="loading" class="spinner-border text-primary mx-auto" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        
+        <form class="formEmp mt-3 d-flex flex-column" [formGroup]="createEmpleado" (ngSubmit)="validaAccion()">
+            
+            <div class="row my-4">
+                <div class="col">
+                  <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre" aria-label="Nombre">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" formControlName="apellido" placeholder="Apellido" aria-label="Apellido">
+                </div>
+            </div>
+
+            <div class="row my-4">
+                <div class="col">
+                  <input type="text" class="form-control" formControlName="cedula" placeholder="Cédula" aria-label="Cédula">
+                </div>
+                <div class="col">
+                  <input type="number" class="form-control" formControlName="salario" placeholder="Salario" aria-label="Salario">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-4 mx-auto">Guardar</button>
+
+        </form>
+        <span *ngIf="submitted && createEmpleado.invalid" class="alert alert-danger" role="alert">
+          Todos los campos son obligatorios
+        </span>
+    </div>
+</div>
